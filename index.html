@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Affirma — Voiced affirmations for daily rituals</title>
+    <meta
+      name="description"
+      content="Affirma is a daily affirmations app for text and voice rituals. Personalized affirmations, guided sessions, and a voice library that speaks them back to you."
+    />
+    <meta property="og:title" content="Affirma — Voiced affirmations" />
+    <meta
+      property="og:description"
+      content="Daily affirmations spoken back to you in a voice you choose. Build a calm, focused ritual that fits your day."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="./screenshots/image2.jpg" />
+    <link rel="icon" href="./app-icon.png" />
+    <link rel="apple-touch-icon" href="./app-icon.png" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <a class="brand" href="./index.html">
+          <span class="brand__name">Affirma</span>
+        </a>
+        <nav class="nav">
+          <a href="./privacy.html">Privacy</a>
+          <a href="./support.html">Support</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container container--narrow">
+          <p class="hero__kicker">Voiced Affirmations</p>
+          <h1 class="hero__title">Affirma</h1>
+          <p class="hero__lede">
+            A calm daily ritual of affirmations &mdash; spoken back to you
+            in a voice you choose.
+          </p>
+          <a class="btn btn--primary" href="#" aria-disabled="true">
+            Download on the App Store
+          </a>
+        </div>
+      </section>
+
+      <section id="showcase">
+        <div class="container">
+          <h2 class="section-title">Made for the quiet minutes</h2>
+          <p class="section-lede">
+            Open Affirma for a moment, hear something kind, and carry
+            it with you through the rest of your day.
+          </p>
+          <div class="showcase">
+            <figure class="showcase__item">
+              <button type="button" class="showcase__trigger" data-shot="./screenshots/image2.jpg" aria-label="Expand the Discover screenshot">
+                <img class="showcase__shot" src="./screenshots/image2.jpg" alt="Discover tab showing the swipeable affirmation deck" />
+              </button>
+              <figcaption class="showcase__caption">
+                Browse a personalized feed and swipe through affirmations
+                tuned to the goals you shared during onboarding.
+              </figcaption>
+            </figure>
+            <figure class="showcase__item">
+              <button type="button" class="showcase__trigger" data-shot="./screenshots/image1.jpg" aria-label="Expand the Hear screenshot">
+                <img class="showcase__shot" src="./screenshots/image1.jpg" alt="Voices tab with options to add a new voice and a list of saved voices" />
+              </button>
+              <figcaption class="showcase__caption">
+                Upload short voice samples &mdash; your own, or someone
+                you love &mdash; and hear your affirmations spoken back.
+              </figcaption>
+            </figure>
+            <figure class="showcase__item">
+              <button type="button" class="showcase__trigger" data-shot="./screenshots/image3.jpg" aria-label="Expand the Build screenshot">
+                <img class="showcase__shot" src="./screenshots/image3.jpg" alt="Practice reminders and a daily session in progress with a 14-day streak" />
+              </button>
+              <figcaption class="showcase__caption">
+                Set gentle reminders and run a short daily session that
+                quietly tracks your streak.
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <dialog id="lightbox" class="lightbox" aria-label="Screenshot preview">
+      <button type="button" class="lightbox__close" data-close aria-label="Close">&times;</button>
+      <img id="lightbox-img" class="lightbox__img" src="" alt="" />
+    </dialog>
+
+    <script>
+      (function () {
+        var dialog = document.getElementById('lightbox');
+        var dialogImg = document.getElementById('lightbox-img');
+        if (!dialog || !dialogImg || typeof dialog.showModal !== 'function') return;
+
+        document.querySelectorAll('.showcase__trigger').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            var src = btn.getAttribute('data-shot');
+            var inner = btn.querySelector('img');
+            dialogImg.src = src;
+            dialogImg.alt = inner ? inner.alt : '';
+            dialog.showModal();
+          });
+        });
+
+        dialog.addEventListener('click', function (event) {
+          if (event.target === dialog || event.target.hasAttribute('data-close')) {
+            dialog.close();
+          }
+        });
+
+        dialog.addEventListener('close', function () {
+          dialogImg.src = '';
+        });
+      })();
+    </script>
+  </body>
+</html>
